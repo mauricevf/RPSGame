@@ -1,0 +1,14 @@
+function exportTrainingData() {
+    let storedData = localStorage.getItem('handData');
+    if (storedData) {
+        let blob = new Blob([storedData], { type: 'application/json' });
+        let url = URL.createObjectURL(blob);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = 'TrainingData.json';
+        a.click();
+        URL.revokeObjectURL(url);
+    } else {
+        console.log("No training data to export.");
+    }
+}
